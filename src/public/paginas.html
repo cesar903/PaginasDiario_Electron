@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paginas | Paginando Diário</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body onload="MostrarPaginas()">
+    <h1> Paginando Diário </h1>
+    <div class="paginas">
+        
+    </div>
+
+    <script>
+        function MostrarPaginas() {
+            const campo = document.querySelector("div.paginas")
+            const resultados = JSON.parse(localStorage.getItem("diario") || "[]")
+            for (var resultado of resultados) {
+                const pagina = document.createElement("div")
+                pagina.setAttribute("class", "pagina")
+                const tempo = document.createElement("h2")
+                const conteudo = document.createElement("p")
+                tempo.innerHTML = resultado.tempo
+                conteudo.innerHTML = resultado.conteudo
+                pagina.appendChild(tempo)
+                pagina.appendChild(conteudo)
+                campo.appendChild(pagina)
+            }
+        }
+    </script>
+</body>
+
+</html>
